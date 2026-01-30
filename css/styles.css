@@ -821,17 +821,13 @@ a {
   height: 80%;
   max-width: 600px;
   overflow: hidden;
-  touch-action: none; /* Allow JS to handle all touch gestures for zoom */
+  touch-action: pan-y;
 }
 
 .lightbox-carousel-track {
   display: flex;
   height: 100%;
   transition: transform 0.3s ease;
-}
-
-.lightbox-carousel-track.zooming {
-  transition: none; /* Disable transitions while zooming */
 }
 
 .lightbox-carousel-slide {
@@ -848,13 +844,6 @@ a {
   max-height: 100%;
   object-fit: contain;
   border-radius: var(--border-radius-small);
-  transform-origin: center center;
-  transition: transform 0.2s ease;
-  will-change: transform;
-}
-
-.lightbox-carousel-slide img.zoomed {
-  transition: none; /* Disable transitions while actively zooming/panning */
 }
 
 .lightbox-carousel-dots {
@@ -911,28 +900,6 @@ a {
 
 .lightbox-nav-btn:hover {
   background: rgba(255, 255, 255, 0.2);
-}
-
-.lightbox-zoom-hint {
-  position: absolute;
-  bottom: 3rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  font-size: 0.75rem;
-  opacity: 0;
-  animation: fadeInOut 3s ease-in-out forwards;
-  pointer-events: none;
-}
-
-@keyframes fadeInOut {
-  0% { opacity: 0; }
-  15% { opacity: 1; }
-  85% { opacity: 1; }
-  100% { opacity: 0; }
 }
 
 /* ============================================
