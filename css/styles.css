@@ -377,6 +377,12 @@ a {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.card-carousel:active {
+  cursor: grabbing;
 }
 
 .card-carousel-track {
@@ -420,22 +426,6 @@ a {
 
 .card-carousel-dot.active {
   background: rgba(255, 255, 255, 0.95);
-}
-
-/* Carousel Tap Zones */
-.card-carousel-tap-zones {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  z-index: 2;
-}
-
-.card-carousel-tap {
-  flex: 1;
-  cursor: pointer;
 }
 
 .card-location {

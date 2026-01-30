@@ -105,10 +105,6 @@ const Cards = {
           <div class="card-carousel-track">
             ${slidesHtml}
           </div>
-          <div class="card-carousel-tap-zones">
-            <div class="card-carousel-tap" data-direction="prev"></div>
-            <div class="card-carousel-tap" data-direction="next"></div>
-          </div>
         </div>
         <div class="card-gradient"></div>
         <div class="card-location">
@@ -132,14 +128,46 @@ const Cards = {
 
   // Attach carousel tap navigation
   attachCarouselEvents(card) {
-    const tapZones = card.querySelectorAll('.card-carousel-tap');
+    const carousel = card.querySelector('.card-carousel');
     
-    tapZones.forEach(zone => {
-      zone.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const direction = zone.dataset.direction;
-        this.navigateCarousel(card, direction);
-      });
+    // Track carousel swipe separately
+    let carouselStartX = 0;
+    let carouselStartY = 0;
+    let isCarouselSwiping = false;
+    
+    carousel.addEventListener('pointerdown', (e) => {
+      carouselStartX = e.clientX;
+      carouselStartY = e.clientY;
+      isCarouselSwiping = true;
+      e.stopPropagation(); // Prevent card drag
+    });
+    
+    carousel.addEventListener('pointermove', (e) => {
+      if (!isCarouselSwiping) return;
+      e.stopPropagation(); // Prevent card drag
+    });
+    
+    carousel.addEventListener('pointerup', (e) => {
+      if (!isCarouselSwiping) return;
+      isCarouselSwiping = false;
+      
+      const deltaX = e.clientX - carouselStartX;
+      const deltaY = e.clientY - carouselStartY;
+      
+      // Only navigate if horizontal swipe is dominant and significant
+      if (Math.abs(deltaX) > 30 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX < 0) {
+          this.navigateCarousel(card, 'next');
+        } else {
+          this.navigateCarousel(card, 'prev');
+        }
+      }
+      
+      e.stopPropagation();
+    });
+    
+    carousel.addEventListener('pointercancel', () => {
+      isCarouselSwiping = false;
     });
   },
 
