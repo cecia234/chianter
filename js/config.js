@@ -12,7 +12,7 @@ const CONFIG = {
   pageTitle: "Chianter 🔥",
   
   // Home page
-  welcomeMessage: "Trova la tua destinazione dell'anima 💘",
+  welcomeMessage: "Ciccio, trova il match perfetto per i tuoi 30 anni! 🎂 Swippa, matcha, parti! 🔥✈️",
   homeButtonText: "Inizia a Swipare 🔥",
   
   // Swipe page
