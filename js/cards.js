@@ -140,15 +140,15 @@ const Cards = {
     const likeIndicator = card.querySelector('.card-indicator.like');
     const rejectIndicator = card.querySelector('.card-indicator.reject');
     
-    // Swipe LEFT (negative X) = LIKE
-    if (this.currentX < -30) {
-      const opacity = Math.min(Math.abs(this.currentX) / this.SWIPE_THRESHOLD, 1);
+    // Swipe RIGHT (positive X) = LIKE
+    if (this.currentX > 30) {
+      const opacity = Math.min(this.currentX / this.SWIPE_THRESHOLD, 1);
       likeIndicator.style.opacity = opacity;
       rejectIndicator.style.opacity = 0;
     }
-    // Swipe RIGHT (positive X) = REJECT
-    else if (this.currentX > 30) {
-      const opacity = Math.min(this.currentX / this.SWIPE_THRESHOLD, 1);
+    // Swipe LEFT (negative X) = REJECT
+    else if (this.currentX < -30) {
+      const opacity = Math.min(Math.abs(this.currentX) / this.SWIPE_THRESHOLD, 1);
       rejectIndicator.style.opacity = opacity;
       likeIndicator.style.opacity = 0;
     }
@@ -167,12 +167,12 @@ const Cards = {
     card.releasePointerCapture(e.pointerId);
     
     // Check if swipe threshold met
-    // Swipe LEFT (negative X) = LIKE
-    if (this.currentX < -this.SWIPE_THRESHOLD) {
+    // Swipe RIGHT (positive X) = LIKE
+    if (this.currentX > this.SWIPE_THRESHOLD) {
       this.completeSwipe(card, 'like');
     }
-    // Swipe RIGHT (positive X) = REJECT
-    else if (this.currentX > this.SWIPE_THRESHOLD) {
+    // Swipe LEFT (negative X) = REJECT
+    else if (this.currentX < -this.SWIPE_THRESHOLD) {
       this.completeSwipe(card, 'reject');
     }
     // Snap back
@@ -203,7 +203,7 @@ const Cards = {
     
     // Fly out animation
     if (action === 'like') {
-      card.classList.add('fly-out-left');
+      card.classList.add('fly-out-right');
       App.saveMatch(siteId);
       
       // Show match notification
@@ -211,7 +211,7 @@ const Cards = {
         this.showMatch(site);
       }, 150);
     } else {
-      card.classList.add('fly-out-right');
+      card.classList.add('fly-out-left');
       App.saveRejected(siteId);
     }
     
