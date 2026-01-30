@@ -77,14 +77,39 @@ const Cards = {
     const card = document.createElement('div');
     card.className = 'card';
     card.dataset.siteId = site.id;
+    card.dataset.currentImage = '0';
     
     if (stackIndex > 0) {
       card.classList.add('card-behind', `card-behind-${stackIndex}`);
     }
     
+    // Build carousel slides
+    const images = site.images || [{ src: site.imageSrc, alt: site.imageAlt }];
+    const slidesHtml = images.map((img, i) => `
+      <div class="card-carousel-slide">
+        <img src="${img.src}" alt="${img.alt}" draggable="false">
+      </div>
+    `).join('');
+    
+    // Build dots
+    const dotsHtml = images.map((_, i) => `
+      <div class="card-carousel-dot${i === 0 ? ' active' : ''}" data-index="${i}"></div>
+    `).join('');
+    
     card.innerHTML = `
       <div class="card-image-container">
-        <img src="${site.imageSrc}" alt="${site.imageAlt}" class="card-image" draggable="false">
+        <div class="card-carousel" data-total="${images.length}">
+          <div class="card-carousel-dots">
+            ${dotsHtml}
+          </div>
+          <div class="card-carousel-track">
+            ${slidesHtml}
+          </div>
+          <div class="card-carousel-tap-zones">
+            <div class="card-carousel-tap" data-direction="prev"></div>
+            <div class="card-carousel-tap" data-direction="next"></div>
+          </div>
+        </div>
         <div class="card-gradient"></div>
         <div class="card-location">
           <span>📍</span>
@@ -99,7 +124,46 @@ const Cards = {
       </div>
     `;
     
+    // Attach carousel tap events
+    this.attachCarouselEvents(card);
+    
     return card;
+  },
+
+  // Attach carousel tap navigation
+  attachCarouselEvents(card) {
+    const tapZones = card.querySelectorAll('.card-carousel-tap');
+    
+    tapZones.forEach(zone => {
+      zone.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const direction = zone.dataset.direction;
+        this.navigateCarousel(card, direction);
+      });
+    });
+  },
+
+  // Navigate carousel
+  navigateCarousel(card, direction) {
+    const carousel = card.querySelector('.card-carousel');
+    const track = card.querySelector('.card-carousel-track');
+    const dots = card.querySelectorAll('.card-carousel-dot');
+    const total = parseInt(carousel.dataset.total);
+    let current = parseInt(card.dataset.currentImage);
+    
+    if (direction === 'next') {
+      current = (current + 1) % total;
+    } else {
+      current = (current - 1 + total) % total;
+    }
+    
+    card.dataset.currentImage = current.toString();
+    track.style.transform = `translateX(-${current * 100}%)`;
+    
+    // Update dots
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === current);
+    });
   },
 
   // Attach pointer events to a card

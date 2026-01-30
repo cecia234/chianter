@@ -368,6 +368,74 @@ a {
   right: 0;
   height: 50%;
   background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Image Carousel */
+.card-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.card-carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.card-carousel-slide {
+  min-width: 100%;
+  height: 100%;
+}
+
+.card-carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Carousel Dots */
+.card-carousel-dots {
+  position: absolute;
+  top: 0.75rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.375rem;
+  z-index: 5;
+  padding: 0 1rem;
+}
+
+.card-carousel-dot {
+  flex: 1;
+  max-width: 60px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+  transition: background 0.2s ease;
+}
+
+.card-carousel-dot.active {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* Carousel Tap Zones */
+.card-carousel-tap-zones {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  z-index: 2;
+}
+
+.card-carousel-tap {
+  flex: 1;
+  cursor: pointer;
 }
 
 .card-location {
@@ -380,6 +448,7 @@ a {
   color: white;
   font-size: 0.875rem;
   font-weight: 500;
+  z-index: 3;
 }
 
 .card-content {

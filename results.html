@@ -68,12 +68,15 @@
       } else {
         // Render each matched site
         matchedSites.forEach((site, index) => {
+          // Get first image from images array or fallback to imageSrc
+          const firstImage = site.images ? site.images[0] : { src: site.imageSrc, alt: site.imageAlt };
+          
           const card = document.createElement('div');
           card.className = 'result-card';
           card.innerHTML = `
             <img 
-              src="${site.imageSrc}" 
-              alt="${site.imageAlt}" 
+              src="${firstImage.src}" 
+              alt="${firstImage.alt}" 
               class="result-card-image"
             >
             <div class="result-card-content">
