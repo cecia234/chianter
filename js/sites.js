@@ -8,6 +8,13 @@
    - location: city/area name (string)
    - description: short description (string, ~100 chars)
    - images: array of { src, alt } objects for the carousel
+   
+   For images.src you can use:
+   - Remote URL: "https://images.unsplash.com/photo-123..."
+   - Local path: "images/sites/florence-1.jpg"
+   
+   Just drop your images in the images/sites/ folder
+   and reference them by filename.
    ============================================ */
 
 const SITES = [
@@ -33,6 +40,18 @@ const SITES = [
       { src: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80", alt: "Siena al tramonto" }
     ]
   },
+  {
+    id: "ciccio",
+    name: "Ciccio",
+    location: "Trieste",
+    description: "🏙️ Mi chiamano la puttana del DSA • Soffro ancora di qualche acciacco al gomito dopo aver salvato il mondo 13 volte 😏 • Aperitivi lover 🍷 • Portami a vedere il tramonto a barcola e sono tuo 🍦",
+    images: [
+      { src: "images\\sites\\ciccio\\cicc1.png", alt: "Torri medievali di San Gimignano al tramonto" },
+      { src: "images\\sites\\ciccio\\cicc2.jpg", alt: "Vicoli di San Gimignano" },
+      { src: "images\\sites\\ciccio\\cicc3.jpg", alt: "Panorama di San Gimignano" },
+      { src: "images\\sites\\ciccio\\cicc4.jpg", alt: "Panorama di San Gimignano" }
+    ]
+  },  
   {
     id: "san-gimignano",
     name: "San Gimignano",
