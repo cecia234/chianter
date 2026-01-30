@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Swipe - Tuscany Trip</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="page-container swipe-container">
+    
+    <!-- Header -->
+    <header class="swipe-header">
+      <a href="index.html" class="swipe-logo">🏛️ Toscana</a>
+    </header>
+    
+    <!-- Card Stack -->
+    <main class="page-content">
+      <div class="card-stack" role="region" aria-label="Destination cards">
+        <!-- Cards will be rendered by JavaScript -->
+      </div>
+    </main>
+    
+    <!-- Action Buttons -->
+    <div class="swipe-actions">
+      <button 
+        class="action-btn reject-btn" 
+        aria-label="Skip this destination"
+        title="Skip"
+      >
+        ✕
+      </button>
+      <button 
+        class="action-btn like-btn" 
+        aria-label="Love this destination"
+        title="Love"
+      >
+        ❤️
+      </button>
+    </div>
+    
+    <!-- Match Overlay -->
+    <div class="match-overlay" role="dialog" aria-label="Match notification">
+      <div class="match-content">
+        <div class="match-icon">💚</div>
+        <h2 class="match-title" data-config="matchTitle">It's a Match! 🎉</h2>
+        <p class="match-site-name"></p>
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/sites.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/cards.js"></script>
+  <script>
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', () => {
+      App.init();
+      Cards.init();
+    });
+  </script>
+</body>
+</html>

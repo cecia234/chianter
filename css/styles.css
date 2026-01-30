@@ -1,0 +1,740 @@
+/* ============================================
+   THEME CONFIGURATION
+   Swap themes by commenting/uncommenting blocks
+   ============================================ */
+
+/* --- TUSCANY THEME (Active) --- */
+:root {
+  /* Primary colors */
+  --color-primary: #C45C26;          /* Terracotta */
+  --color-secondary: #5C6B4A;        /* Olive green */
+  --color-accent: #D4A84B;           /* Tuscan gold */
+  
+  /* Background & text */
+  --color-background: #FDF8F3;       /* Warm cream */
+  --color-surface: #FFFFFF;          /* Card background */
+  --color-text: #2C2416;             /* Dark brown */
+  --color-text-light: #6B5D4D;       /* Muted brown */
+  
+  /* Gradients */
+  --gradient-main: linear-gradient(135deg, #C45C26 0%, #D4A84B 100%);
+  --gradient-hero: linear-gradient(180deg, #FDF8F3 0%, #F5E6D3 100%);
+  
+  /* Action colors */
+  --color-like: #5C6B4A;             /* Olive - like/match */
+  --color-like-light: #7A8F62;
+  --color-reject: #A67C5B;           /* Muted sienna - reject */
+  --color-reject-light: #C49A7A;
+  
+  /* UI elements */
+  --color-border: #E5D5C3;
+  --shadow-card: 0 4px 20px rgba(44, 36, 22, 0.15);
+  --shadow-card-hover: 0 8px 30px rgba(44, 36, 22, 0.25);
+  --border-radius: 16px;
+  --border-radius-small: 8px;
+  
+  /* Typography */
+  --font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-display: Georgia, 'Times New Roman', serif;
+}
+
+/* --- TINDER THEME (Uncomment to activate) ---
+:root {
+  --color-primary: #FE3C72;
+  --color-secondary: #FF6B6B;
+  --color-accent: #FF8E53;
+  
+  --color-background: #F5F5F5;
+  --color-surface: #FFFFFF;
+  --color-text: #21262E;
+  --color-text-light: #656E7B;
+  
+  --gradient-main: linear-gradient(135deg, #FE3C72 0%, #FF6B6B 50%, #FF8E53 100%);
+  --gradient-hero: linear-gradient(180deg, #FFFFFF 0%, #FFF0F3 100%);
+  
+  --color-like: #00D46A;
+  --color-like-light: #33DD88;
+  --color-reject: #FF4458;
+  --color-reject-light: #FF6B7A;
+  
+  --color-border: #E8E8E8;
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.2);
+  --border-radius: 16px;
+  --border-radius-small: 8px;
+  
+  --font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-display: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+--- */
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--color-background);
+  color: var(--color-text);
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile */
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+
+.page-container {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  padding-top: env(safe-area-inset-top, 1rem);
+  padding-bottom: env(safe-area-inset-bottom, 1rem);
+}
+
+.page-header {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.page-title {
+  font-family: var(--font-family-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.page-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ============================================
+   HOME PAGE
+   ============================================ */
+
+.home-container {
+  background: var(--gradient-hero);
+  text-align: center;
+  justify-content: space-between;
+  padding: 2rem 1.5rem;
+}
+
+.home-hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.home-icon {
+  width: 120px;
+  height: 120px;
+  background: var(--gradient-main);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+.home-title {
+  font-family: var(--font-family-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.home-title .highlight {
+  color: var(--color-primary);
+}
+
+.home-subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-light);
+  max-width: 300px;
+}
+
+.home-age-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-surface);
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  box-shadow: var(--shadow-card);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.home-actions {
+  width: 100%;
+  max-width: 320px;
+  padding: 2rem 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  min-height: 56px; /* Touch target */
+}
+
+.btn-primary {
+  width: 100%;
+  background: var(--gradient-main);
+  color: white;
+  box-shadow: var(--shadow-card);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--color-surface);
+  color: var(--color-primary);
+  border: 2px solid var(--color-border);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  border-color: var(--color-primary);
+}
+
+/* ============================================
+   SWIPE PAGE
+   ============================================ */
+
+.swipe-container {
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.swipe-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0 1rem;
+}
+
+.swipe-logo {
+  font-family: var(--font-family-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.swipe-progress {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+}
+
+/* Card Stack */
+.card-stack {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+@media (max-height: 700px) {
+  .card-stack {
+    height: 400px;
+  }
+}
+
+/* Individual Card */
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  will-change: transform;
+  transition: box-shadow 0.2s ease;
+  /* Ensure card is fully opaque */
+  opacity: 1;
+  backface-visibility: hidden;
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+.card.card-behind {
+  pointer-events: none;
+  /* Hide cards behind - only show subtle edge hint */
+  visibility: hidden;
+}
+
+.card.card-behind-1 {
+  visibility: visible;
+  transform: scale(0.98) translateY(8px);
+  opacity: 1;
+  z-index: -1;
+}
+
+.card.card-behind-2 {
+  visibility: hidden;
+  transform: scale(0.96) translateY(16px);
+  opacity: 1;
+  z-index: -2;
+}
+
+.card-image-container {
+  position: relative;
+  height: 65%;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%);
+}
+
+.card-location {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.card-content {
+  padding: 1.25rem;
+  height: 35%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-name {
+  font-family: var(--font-family-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.card-description {
+  font-size: 0.9375rem;
+  color: var(--color-text-light);
+  line-height: 1.5;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* Swipe Indicators */
+.card-indicator {
+  position: absolute;
+  top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-small);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0;
+  transform: rotate(-20deg);
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+
+.card-indicator.like {
+  left: 1.5rem;
+  border: 4px solid var(--color-like);
+  color: var(--color-like);
+}
+
+.card-indicator.reject {
+  right: 1.5rem;
+  border: 4px solid var(--color-reject);
+  color: var(--color-reject);
+  transform: rotate(20deg);
+}
+
+/* Action Buttons */
+.swipe-actions {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.5rem 0;
+}
+
+.action-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-card);
+}
+
+.action-btn.reject-btn {
+  background: var(--color-surface);
+  color: var(--color-reject);
+  border: 2px solid var(--color-reject);
+}
+
+.action-btn.reject-btn:hover,
+.action-btn.reject-btn:focus {
+  background: var(--color-reject);
+  color: white;
+  transform: scale(1.1);
+}
+
+.action-btn.like-btn {
+  background: var(--color-surface);
+  color: var(--color-like);
+  border: 2px solid var(--color-like);
+}
+
+.action-btn.like-btn:hover,
+.action-btn.like-btn:focus {
+  background: var(--color-like);
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+
+.empty-state-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.empty-state-title {
+  font-family: var(--font-family-display);
+  font-size: 1.5rem;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.empty-state-text {
+  color: var(--color-text-light);
+  margin-bottom: 2rem;
+}
+
+/* ============================================
+   MATCH ANIMATION
+   ============================================ */
+
+.match-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.match-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.match-content {
+  text-align: center;
+  color: white;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.match-overlay.active .match-content {
+  transform: scale(1);
+}
+
+.match-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  animation: pulse 0.6s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.match-title {
+  font-family: var(--font-family-display);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.match-site-name {
+  font-size: 1.25rem;
+  opacity: 0.9;
+}
+
+/* ============================================
+   RESULTS PAGE
+   ============================================ */
+
+.results-container {
+  padding-bottom: 2rem;
+}
+
+.results-header {
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+.results-title {
+  font-family: var(--font-family-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.results-subtitle {
+  color: var(--color-text-light);
+}
+
+.results-count {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Results List */
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.result-card {
+  display: flex;
+  gap: 1rem;
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.result-card-image {
+  width: 100px;
+  height: 100px;
+  border-radius: var(--border-radius-small);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.result-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.result-card-name {
+  font-family: var(--font-family-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+}
+
+.result-card-location {
+  font-size: 0.875rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.result-card-description {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Results Actions */
+.results-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 1rem;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* Empty Results */
+.results-empty {
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+
+.results-empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.results-empty-title {
+  font-family: var(--font-family-display);
+  font-size: 1.5rem;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.results-empty-text {
+  color: var(--color-text-light);
+  margin-bottom: 2rem;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+.card.swiping {
+  transition: none;
+}
+
+.card.fly-out-left {
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  transform: translateX(-150%) rotate(-30deg) !important;
+  opacity: 0;
+}
+
+.card.fly-out-right {
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  transform: translateX(150%) rotate(30deg) !important;
+  opacity: 0;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+button:focus:not(:focus-visible) {
+  outline: none;
+}

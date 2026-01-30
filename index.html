@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Tuscany Trip Planner</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="page-container home-container">
+    
+    <div class="home-hero">
+      <!-- App Icon -->
+      <div class="home-icon">
+        🏛️
+      </div>
+      
+      <!-- Title -->
+      <h1 class="home-title">
+        <span data-config="name">Marco</span>'s<br>
+        <span class="highlight">Tuscany Adventure</span>
+      </h1>
+      
+      <!-- Subtitle -->
+      <p class="home-subtitle" data-config="welcomeMessage">
+        Help Marco pick the perfect spots for his 30th birthday trip!
+      </p>
+      
+      <!-- Age Badge -->
+      <div class="home-age-badge">
+        🎂 Turning <span data-config="age">30</span>!
+      </div>
+    </div>
+    
+    <!-- Instructions -->
+    <div class="home-instructions" style="text-align: center; margin-bottom: 1rem;">
+      <p style="color: var(--color-text-light); font-size: 0.9rem; margin-bottom: 0.5rem;">
+        <strong>Come si gioca:</strong>
+      </p>
+      <p style="color: var(--color-text-light); font-size: 0.875rem;">
+        👈 Scorri a sinistra per <span style="color: var(--color-like); font-weight: 600;">AMARE</span> una meta<br>
+        👉 Scorri a destra per <span style="color: var(--color-reject); font-weight: 600;">SALTARLA</span>
+      </p>
+    </div>
+    
+    <!-- CTA Button -->
+    <div class="home-actions">
+      <a href="swipe.html" class="btn btn-primary" data-config="homeButtonText">
+        Start Exploring 🌻
+      </a>
+    </div>
+    
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', () => {
+      App.init();
+      
+      // Optional: Reset progress when returning to home
+      // Uncomment the line below if you want a fresh start each time
+      // App.resetAll();
+    });
+  </script>
+</body>
+</html>

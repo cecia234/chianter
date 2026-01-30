@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Your Matches - Tuscany Trip</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="page-container results-container">
+    
+    <!-- Header -->
+    <header class="results-header">
+      <h1 class="results-title" data-config="resultsTitle">Marco's Dream Itinerary</h1>
+      <p class="results-subtitle">
+        <span data-config="resultsSubtitle">Here are the places you loved</span>
+        <span class="results-count"></span>
+      </p>
+    </header>
+    
+    <!-- Results List -->
+    <main class="results-list" id="results-list">
+      <!-- Results will be rendered by JavaScript -->
+    </main>
+    
+    <!-- Actions -->
+    <div class="results-actions">
+      <button class="btn btn-primary" id="swipe-again-btn">
+        <span data-config="swipeAgainText">Ricomincia 🔄</span>
+      </button>
+      <a href="index.html" class="btn btn-secondary">
+        Torna alla Home
+      </a>
+    </div>
+    
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/sites.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Results page logic
+    document.addEventListener('DOMContentLoaded', () => {
+      App.init();
+      
+      const listEl = document.getElementById('results-list');
+      const countEl = document.querySelector('.results-count');
+      const swipeAgainBtn = document.getElementById('swipe-again-btn');
+      
+      // Get matched sites
+      const matchedSites = App.getMatchedSites();
+      
+      // Update count
+      if (countEl) {
+        countEl.textContent = ` (${matchedSites.length})`;
+      }
+      
+      // Render results or empty state
+      if (matchedSites.length === 0) {
+        listEl.innerHTML = `
+          <div class="results-empty">
+            <div class="results-empty-icon">🤔</div>
+            <h2 class="results-empty-title">${CONFIG.emptyResultsTitle}</h2>
+            <p class="results-empty-text">${CONFIG.emptyResultsText}</p>
+          </div>
+        `;
+      } else {
+        // Render each matched site
+        matchedSites.forEach((site, index) => {
+          const card = document.createElement('div');
+          card.className = 'result-card';
+          card.innerHTML = `
+            <img 
+              src="${site.imageSrc}" 
+              alt="${site.imageAlt}" 
+              class="result-card-image"
+            >
+            <div class="result-card-content">
+              <h3 class="result-card-name">${index + 1}. ${site.name}</h3>
+              <p class="result-card-location">📍 ${site.location}</p>
+              <p class="result-card-description">${site.description}</p>
+            </div>
+          `;
+          listEl.appendChild(card);
+        });
+      }
+      
+      // Swipe Again button - reset and go to swipe page
+      swipeAgainBtn.addEventListener('click', () => {
+        App.resetAll();
+        App.goTo('swipe.html');
+      });
+    });
+  </script>
+</body>
+</html>
