@@ -5,39 +5,39 @@
 
 const CONFIG = {
   // Birthday person details
-  name: "Marco",
+  name: "Ciccio",
   age: 30,
   
   // Page titles and messages
-  pageTitle: "L'Avventura Toscana di Marco",
+  pageTitle: "Chianter 🔥",
   
   // Home page
-  welcomeMessage: "Aiuta Marco a scegliere le mete perfette per il suo viaggio di compleanno!",
-  homeButtonText: "Inizia a Esplorare 🌻",
+  welcomeMessage: "Trova la tua destinazione dell'anima 💘",
+  homeButtonText: "Inizia a Swipare 🔥",
   
   // Swipe page
-  swipeTitle: "Toscana Swipe",
+  swipeTitle: "Chianter",
   likeText: "WOW",
   rejectText: "MEH",
   
   // Match notification
-  matchTitle: "È un Match! 🎉",
-  matchSubtitle: "Aggiunto al tuo viaggio",
+  matchTitle: "È un Match! 💚",
+  matchSubtitle: "Vi siete piaciuti!",
   
   // Results page
-  resultsTitle: "L'Itinerario dei Sogni di Marco",
-  resultsSubtitle: "Ecco i posti che hai amato",
-  emptyResultsTitle: "Nessun match ancora!",
-  emptyResultsText: "Torna indietro e scopri le meravigliose destinazioni toscane.",
+  resultsTitle: "I Tuoi Match 💘",
+  resultsSubtitle: "Queste destinazioni hanno fatto swipe right su di te",
+  emptyResultsTitle: "Nessun match... ancora! 💔",
+  emptyResultsText: "Non arrenderti! L'anima gemella toscana ti sta aspettando.",
   
   // Buttons
-  seeMatchesText: "Vedi i Tuoi Match ✨",
-  swipeAgainText: "Ricomincia 🔄",
-  shareText: "Condividi Itinerario 📤",
+  seeMatchesText: "Vedi Chi Ti Ha Matchato 💘",
+  swipeAgainText: "Ritenta la Fortuna 🔄",
+  shareText: "Condividi i Match 📤",
   
   // End of cards
-  endTitle: "Questo è tutto!",
-  endText: "Hai visto tutte le destinazioni. Pronto a vedere i tuoi match?",
+  endTitle: "Hai visto tutti i profili! 👀",
+  endText: "Scopri chi ha fatto match con te",
 };
 
 // Make CONFIG available globally
