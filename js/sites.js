@@ -47,9 +47,14 @@ const SITES = [
     description: "🏙️ Mi chiamano la puttana del DSA • Soffro ancora di qualche acciacco al gomito dopo aver salvato il mondo 13 volte 😏 • Aperitivi lover 🍷 • Portami a vedere il tramonto a barcola e sono tuo 🍦",
     images: [
       { src: "images\\sites\\ciccio\\cicc1.png", alt: "Torri medievali di San Gimignano al tramonto" },
+      { src: "images\\sites\\ciccio\\cicc7.png", alt: "Torri medievali di San Gimignano al tramonto" },
+      { src: "images\\sites\\ciccio\\cicc8.png", alt: "Torri medievali di San Gimignano al tramonto" },
+      { src: "images\\sites\\ciccio\\cicc10.png", alt: "Torri medievali di San Gimignano al tramonto" },
+      { src: "images\\sites\\ciccio\\cicc4.jpg", alt: "Panorama di San Gimignano" },
+      { src: "images\\sites\\ciccio\\cicc11.png", alt: "Panorama di San Gimignano" },
       { src: "images\\sites\\ciccio\\cicc3.jpg", alt: "Panorama di San Gimignano" },
       { src: "images\\sites\\ciccio\\cicc2.jpg", alt: "Vicoli di San Gimignano" },
-      { src: "images\\sites\\ciccio\\cicc4.jpg", alt: "Panorama di San Gimignano" }
+      { src: "images\\sites\\ciccio\\cicc5.jpg", alt: "Panorama di San Gimignano" },
   ]
   },  
   {

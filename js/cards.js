@@ -114,16 +114,31 @@ const Cards = {
         <div class="card-indicator like">${CONFIG.likeText}</div>
         <div class="card-indicator reject">${CONFIG.rejectText}</div>
       </div>
-      <div class="card-content">
+      <div class="card-content" data-site-id="${site.id}">
         <h2 class="card-name">${site.name}</h2>
         <p class="card-description">${site.description}</p>
+        <button class="card-expand-desc-btn" aria-label="Espandi descrizione">ℹ️</button>
       </div>
     `;
     
     // Attach carousel tap events
     this.attachCarouselEvents(card);
     
+    // Attach description expand event
+    this.attachDescriptionEvents(card);
+    
     return card;
+  },
+
+  // Attach description expand event
+  attachDescriptionEvents(card) {
+    const expandBtn = card.querySelector('.card-expand-desc-btn');
+    const siteId = card.dataset.siteId;
+    
+    expandBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.openDescriptionModal(siteId);
+    });
   },
 
   // Attach carousel tap navigation
@@ -531,6 +546,66 @@ const Cards = {
     };
 
     document.removeEventListener('keydown', keyHandler);
+    document.addEventListener('keydown', keyHandler);
+  },
+
+  // Description modal
+  descriptionModal: null,
+
+  // Open description modal
+  openDescriptionModal(siteId) {
+    const site = SITES.find(s => s.id === siteId);
+    if (!site) return;
+
+    this.descriptionModal = document.getElementById('description-modal');
+    if (!this.descriptionModal) return;
+
+    // Fill content
+    this.descriptionModal.querySelector('.description-modal-title').textContent = site.name;
+    this.descriptionModal.querySelector('.description-modal-location').textContent = '📍 ' + site.location;
+    this.descriptionModal.querySelector('.description-modal-text').textContent = site.description;
+
+    // Show modal
+    this.descriptionModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Attach close events
+    this.attachDescriptionModalEvents();
+  },
+
+  // Close description modal
+  closeDescriptionModal() {
+    if (!this.descriptionModal) return;
+    this.descriptionModal.classList.remove('active');
+    document.body.style.overflow = '';
+  },
+
+  // Attach description modal events
+  attachDescriptionModalEvents() {
+    const closeBtn = this.descriptionModal.querySelector('.description-modal-close');
+
+    // Remove old listener by cloning
+    const newCloseBtn = closeBtn.cloneNode(true);
+    closeBtn.parentNode.replaceChild(newCloseBtn, closeBtn);
+
+    // Close button
+    newCloseBtn.addEventListener('click', () => this.closeDescriptionModal());
+
+    // Click outside to close
+    this.descriptionModal.addEventListener('click', (e) => {
+      if (e.target === this.descriptionModal) {
+        this.closeDescriptionModal();
+      }
+    });
+
+    // Escape key to close
+    const keyHandler = (e) => {
+      if (!this.descriptionModal.classList.contains('active')) return;
+      if (e.key === 'Escape') {
+        this.closeDescriptionModal();
+      }
+    };
+
     document.addEventListener('keydown', keyHandler);
   }
 };
