@@ -462,6 +462,9 @@ const Cards = {
 
   // Navigate lightbox
   navigateLightbox(direction) {
+    // Reset zoom when navigating
+    this.resetZoom();
+    
     const total = this.lightboxImages.length;
     
     if (direction === 'next') {
@@ -509,20 +512,141 @@ const Cards = {
       }
     });
 
-    // Swipe support
-    let startX = 0;
-    let isSwiping = false;
+    // Pinch-to-zoom and swipe support
+    this.attachLightboxZoomEvents(carousel);
+  },
+
+  // Pinch-to-zoom state
+  zoomState: {
+    scale: 1,
+    translateX: 0,
+    translateY: 0,
+    initialDistance: 0,
+    initialScale: 1,
+    isPinching: false,
+    isSwiping: false,
+    startX: 0,
+    startY: 0,
+    lastTap: 0
+  },
+
+  // Reset zoom state
+  resetZoom() {
+    this.zoomState.scale = 1;
+    this.zoomState.translateX = 0;
+    this.zoomState.translateY = 0;
+    this.applyZoomTransform();
+  },
+
+  // Apply zoom transform to current image
+  applyZoomTransform() {
+    const currentSlide = this.lightbox.querySelectorAll('.lightbox-carousel-slide')[this.lightboxCurrentIndex];
+    if (!currentSlide) return;
+    
+    const img = currentSlide.querySelector('img');
+    if (!img) return;
+    
+    img.style.transform = `scale(${this.zoomState.scale}) translate(${this.zoomState.translateX}px, ${this.zoomState.translateY}px)`;
+  },
+
+  // Get distance between two touch points
+  getTouchDistance(touches) {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  },
+
+  // Attach zoom events to lightbox carousel
+  attachLightboxZoomEvents(carousel) {
+    const state = this.zoomState;
+    
+    // Use touch events for pinch-to-zoom
+    carousel.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 2) {
+        // Pinch start
+        state.isPinching = true;
+        state.initialDistance = this.getTouchDistance(e.touches);
+        state.initialScale = state.scale;
+        e.preventDefault();
+      } else if (e.touches.length === 1) {
+        // Single touch - for swipe or pan
+        state.startX = e.touches[0].clientX;
+        state.startY = e.touches[0].clientY;
+        state.isSwiping = true;
+        
+        // Double tap to zoom
+        const now = Date.now();
+        if (now - state.lastTap < 300) {
+          if (state.scale > 1) {
+            this.resetZoom();
+          } else {
+            state.scale = 2.5;
+            this.applyZoomTransform();
+          }
+          state.isSwiping = false;
+        }
+        state.lastTap = now;
+      }
+    }, { passive: false });
+
+    carousel.addEventListener('touchmove', (e) => {
+      if (state.isPinching && e.touches.length === 2) {
+        // Pinch zoom
+        const currentDistance = this.getTouchDistance(e.touches);
+        const scaleChange = currentDistance / state.initialDistance;
+        state.scale = Math.min(Math.max(state.initialScale * scaleChange, 1), 4);
+        this.applyZoomTransform();
+        e.preventDefault();
+      } else if (state.isSwiping && e.touches.length === 1 && state.scale > 1) {
+        // Pan when zoomed
+        const deltaX = e.touches[0].clientX - state.startX;
+        const deltaY = e.touches[0].clientY - state.startY;
+        state.translateX += deltaX / state.scale;
+        state.translateY += deltaY / state.scale;
+        state.startX = e.touches[0].clientX;
+        state.startY = e.touches[0].clientY;
+        this.applyZoomTransform();
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    carousel.addEventListener('touchend', (e) => {
+      if (state.isPinching) {
+        state.isPinching = false;
+        // Snap back to 1 if close
+        if (state.scale < 1.1) {
+          this.resetZoom();
+        }
+      } else if (state.isSwiping && state.scale === 1) {
+        // Swipe to navigate (only when not zoomed)
+        const deltaX = e.changedTouches[0].clientX - state.startX;
+        if (Math.abs(deltaX) > 50) {
+          if (deltaX < 0) {
+            this.navigateLightbox('next');
+          } else {
+            this.navigateLightbox('prev');
+          }
+        }
+      }
+      state.isSwiping = false;
+    });
+
+    // Fallback for mouse/pointer (desktop)
+    let pointerStartX = 0;
+    let isPointerDown = false;
 
     carousel.addEventListener('pointerdown', (e) => {
-      startX = e.clientX;
-      isSwiping = true;
+      if (e.pointerType === 'touch') return; // Handled by touch events
+      pointerStartX = e.clientX;
+      isPointerDown = true;
     });
 
     carousel.addEventListener('pointerup', (e) => {
-      if (!isSwiping) return;
-      isSwiping = false;
+      if (e.pointerType === 'touch') return;
+      if (!isPointerDown) return;
+      isPointerDown = false;
 
-      const deltaX = e.clientX - startX;
+      const deltaX = e.clientX - pointerStartX;
       if (Math.abs(deltaX) > 50) {
         if (deltaX < 0) {
           this.navigateLightbox('next');
