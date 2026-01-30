@@ -161,6 +161,11 @@ const Cards = {
         } else {
           this.navigateCarousel(card, 'prev');
         }
+      } else if (Math.abs(deltaX) < 10 && Math.abs(deltaY) < 10) {
+        // It's a tap - open lightbox
+        const siteId = card.dataset.siteId;
+        const currentImage = parseInt(card.dataset.currentImage);
+        this.openLightbox(siteId, currentImage);
       }
       
       e.stopPropagation();
@@ -390,6 +395,143 @@ const Cards = {
     if (progressEl) {
       progressEl.textContent = `${this.currentIndex + 1} / ${SITES.length}`;
     }
+  },
+
+  // Lightbox state
+  lightbox: null,
+  lightboxCurrentIndex: 0,
+  lightboxImages: [],
+
+  // Open lightbox
+  openLightbox(siteId, startIndex = 0) {
+    const site = SITES.find(s => s.id === siteId);
+    if (!site) return;
+
+    this.lightbox = document.getElementById('lightbox');
+    if (!this.lightbox) return;
+
+    this.lightboxImages = site.images || [{ src: site.imageSrc, alt: site.imageAlt }];
+    this.lightboxCurrentIndex = startIndex;
+
+    // Build slides
+    const track = this.lightbox.querySelector('.lightbox-carousel-track');
+    const dotsContainer = this.lightbox.querySelector('.lightbox-carousel-dots');
+
+    track.innerHTML = this.lightboxImages.map((img, i) => `
+      <div class="lightbox-carousel-slide">
+        <img src="${img.src}" alt="${img.alt}">
+      </div>
+    `).join('');
+
+    dotsContainer.innerHTML = this.lightboxImages.map((_, i) => `
+      <div class="lightbox-carousel-dot${i === startIndex ? ' active' : ''}"></div>
+    `).join('');
+
+    // Set initial position
+    track.style.transform = `translateX(-${startIndex * 100}%)`;
+
+    // Show lightbox
+    this.lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Attach events
+    this.attachLightboxEvents();
+  },
+
+  // Close lightbox
+  closeLightbox() {
+    if (!this.lightbox) return;
+    this.lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  },
+
+  // Navigate lightbox
+  navigateLightbox(direction) {
+    const total = this.lightboxImages.length;
+    
+    if (direction === 'next') {
+      this.lightboxCurrentIndex = (this.lightboxCurrentIndex + 1) % total;
+    } else {
+      this.lightboxCurrentIndex = (this.lightboxCurrentIndex - 1 + total) % total;
+    }
+
+    const track = this.lightbox.querySelector('.lightbox-carousel-track');
+    const dots = this.lightbox.querySelectorAll('.lightbox-carousel-dot');
+
+    track.style.transform = `translateX(-${this.lightboxCurrentIndex * 100}%)`;
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === this.lightboxCurrentIndex);
+    });
+  },
+
+  // Attach lightbox events
+  attachLightboxEvents() {
+    const closeBtn = this.lightbox.querySelector('.lightbox-close');
+    const prevBtn = this.lightbox.querySelector('.lightbox-prev');
+    const nextBtn = this.lightbox.querySelector('.lightbox-next');
+    const carousel = this.lightbox.querySelector('.lightbox-carousel');
+
+    // Remove old listeners by cloning
+    const newCloseBtn = closeBtn.cloneNode(true);
+    const newPrevBtn = prevBtn.cloneNode(true);
+    const newNextBtn = nextBtn.cloneNode(true);
+    closeBtn.parentNode.replaceChild(newCloseBtn, closeBtn);
+    prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
+    nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
+
+    // Close button
+    newCloseBtn.addEventListener('click', () => this.closeLightbox());
+
+    // Nav buttons
+    newPrevBtn.addEventListener('click', () => this.navigateLightbox('prev'));
+    newNextBtn.addEventListener('click', () => this.navigateLightbox('next'));
+
+    // Click outside to close
+    this.lightbox.addEventListener('click', (e) => {
+      if (e.target === this.lightbox) {
+        this.closeLightbox();
+      }
+    });
+
+    // Swipe support
+    let startX = 0;
+    let isSwiping = false;
+
+    carousel.addEventListener('pointerdown', (e) => {
+      startX = e.clientX;
+      isSwiping = true;
+    });
+
+    carousel.addEventListener('pointerup', (e) => {
+      if (!isSwiping) return;
+      isSwiping = false;
+
+      const deltaX = e.clientX - startX;
+      if (Math.abs(deltaX) > 50) {
+        if (deltaX < 0) {
+          this.navigateLightbox('next');
+        } else {
+          this.navigateLightbox('prev');
+        }
+      }
+    });
+
+    // Keyboard navigation
+    const keyHandler = (e) => {
+      if (!this.lightbox.classList.contains('active')) return;
+      
+      if (e.key === 'Escape') {
+        this.closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        this.navigateLightbox('prev');
+      } else if (e.key === 'ArrowRight') {
+        this.navigateLightbox('next');
+      }
+    };
+
+    document.removeEventListener('keydown', keyHandler);
+    document.addEventListener('keydown', keyHandler);
   }
 };
 
