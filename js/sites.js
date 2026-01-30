@@ -91,6 +91,15 @@ const SITES = [
     ]
   },
   {
+    id: "jew-mario",
+    name: "Mario",
+    location: "Via S. Francesco D'Assisi, 19, 34133 Trieste TS",
+    description: "ANI BA BESHVILCHA \nANI BA LEKACHET OTCHA \nANI YEHUDI MARIO",
+    images: [
+      { src: "images\\sites\\jewmario\\mario1.jpg", alt: "Torri medievali di San Gimignano al tramonto" },
+     ]
+  },  
+  {
     id: "chianti",
     name: "Vigneti del Chianti",
     location: "Regione del Chianti",
