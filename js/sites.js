@@ -20,34 +20,36 @@
 const SITES = [
   {
     id: "florence-duomo",
-    name: "Duomo di Firenze",
-    location: "Firenze",
+    name: "Firenze",
+    location: "Toscana",
     description: "🏛️ Iconica e maestosa • La cupola più bella che tu abbia mai visto 😍 • Amo dominare lo skyline • Cercasi qualcuno che apprezzi l'arte rinascimentale 🎨",
     images: [
       { src: "https://images.unsplash.com/photo-1541370976299-4d24ebbc9077?w=800&q=80", alt: "Cupola del Duomo di Firenze contro il cielo blu" },
-      { src: "https://images.unsplash.com/photo-1543429258-dbd00194c570?w=800&q=80", alt: "Interno del Duomo di Firenze" },
-      { src: "https://images.unsplash.com/photo-1534359265607-b39e94bc49ac?w=800&q=80", alt: "Vista panoramica di Firenze" }
+      { src: "https://images.unsplash.com/photo-1476362174823-3a23f4aa6d76?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Interno del Duomo di Firenze" },
+      { src: "https://images.unsplash.com/photo-1543429258-cc721a300e8a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Vista panoramica di Firenze" }
     ]
   },
   {
     id: "piazza-del-campo",
-    name: "Piazza del Campo",
-    location: "Siena",
-    description: "🐚 A forma di conchiglia, unica nel mio genere • Mi piace ospitare feste pazze (cerca Palio 🐎) • Romantica al tramonto 🌅 • Porto sempre aperitivo!",
+    name: "Siena",
+    location: "Toscana",
+    description: "🐚 La mia piazza è a forma di conchiglia, unica nel mio genere • Mi piace ospitare feste pazze (cerca Palio 🐎) • Romantica al tramonto 🌅 • Porto sempre aperitivo!",
     images: [
-      { src: "https://images.unsplash.com/photo-1539180880785-10a8823ac26e?w=800&q=80", alt: "Vista aerea di Piazza del Campo a Siena" },
-      { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", alt: "Torre del Mangia a Siena" },
-      { src: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80", alt: "Siena al tramonto" }
+      { src: "https://images.unsplash.com/photo-1604142056225-1feabdac3af1?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Vista aerea di Piazza del Campo a Siena" },
+      { src: "https://plus.unsplash.com/premium_photo-1721162880418-437b168999c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Torre del Mangia a Siena" },
+      { src: "https://images.unsplash.com/photo-1763981116568-8c04df9c304b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8c2llbmElMjBwYWxpb3xlbnwwfHwwfHx8MA%3D%3D", alt: "Siena al tramonto" }
     ]
   },
   {
     id: "ciccio",
     name: "Ciccio",
     location: "Trieste",
-    description: "🏙️ Mi chiamano la puttana del DSA • Soffro ancora di qualche acciacco al gomito dopo aver salvato il mondo 13 volte 😏 • Aperitivi lover 🍷 • Portami a vedere il tramonto a barcola e sono tuo 🍦",
+    description: "🏙️ Mi chiamano la puttana del DSV • Portami a vedere il tramonto a barcola e sono tuo 🍦 • Soffro ancora di qualche acciacco a gomito e collo dopo aver salvato il mondo 13 volte 😏 • Aperitivo lover 🍷 ",
     images: [
       { src: "images\\sites\\ciccio\\cicc1.png", alt: "Torri medievali di San Gimignano al tramonto" },
       { src: "images\\sites\\ciccio\\cicc7.png", alt: "Torri medievali di San Gimignano al tramonto" },
+      { src: "images\\sites\\ciccio\\cicc1.png", alt: "Torri medievali di San Gimignano al tramonto" },
+      { src: "images\\sites\\ciccio\\cicc6.png", alt: "Torri medievali di San Gimignano al tramonto" },
       { src: "images\\sites\\ciccio\\cicc8.png", alt: "Torri medievali di San Gimignano al tramonto" },
       { src: "images\\sites\\ciccio\\cicc10.png", alt: "Torri medievali di San Gimignano al tramonto" },
       { src: "images\\sites\\ciccio\\cicc4.jpg", alt: "Panorama di San Gimignano" },
@@ -63,9 +65,9 @@ const SITES = [
     location: "San Gimignano",
     description: "🏙️ Mi chiamano la Manhattan del Medioevo • Ho più torri che ex 😏 • Vernaccia lover 🍷 • Il mio gelato è stato premiato campione del mondo 🍦",
     images: [
-      { src: "https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?w=800&q=80", alt: "Torri medievali di San Gimignano al tramonto" },
-      { src: "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=800&q=80", alt: "Vicoli di San Gimignano" },
-      { src: "https://images.unsplash.com/photo-1592914610354-fd354ea45e48?w=800&q=80", alt: "Panorama di San Gimignano" }
+      { src: "https://images.unsplash.com/photo-1653228239729-f7cc50704951?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2FuJTIwZ2ltaWduYW5vfGVufDB8fDB8fHww", alt: "Torri medievali di San Gimignano al tramonto" },
+      { src: "https://images.unsplash.com/photo-1733269345489-3bd78e434762?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHNhbiUyMGdpbWlnbmFub3xlbnwwfHwwfHx8MA%3D%3D", alt: "Vicoli di San Gimignano" },
+      { src: "https://images.unsplash.com/photo-1717170650089-7ec5541947ca?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8c2FuJTIwZ2ltaWduYW5vJTIwZ2VsYXRlcmlhfGVufDB8fDB8fHww", alt: "Panorama di San Gimignano" }
     ]
   },
   {
@@ -74,20 +76,20 @@ const SITES = [
     location: "Toscana del Sud",
     description: "🌾 Colline che sembrano onde • UNESCO approved ✅ • Quei cipressi nelle foto? Sono tutti miei 🌲 • Perfetta per foto Instagram 📸",
     images: [
-      { src: "https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=800&q=80", alt: "Colline della Val d'Orcia con cipressi" },
-      { src: "https://images.unsplash.com/photo-1501952476817-d7ae22e8ee4e?w=800&q=80", alt: "Strada con cipressi in Val d'Orcia" },
-      { src: "https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?w=800&q=80", alt: "Alba in Val d'Orcia" }
+      { src: "https://images.unsplash.com/photo-1653843034003-467e337f4c99?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmFsJTIwZCdvcmNpYXxlbnwwfHwwfHx8MA%3D%3D", alt: "Colline della Val d'Orcia con cipressi" },
+      { src: "https://images.unsplash.com/photo-1718338561052-bdd1c58ddf6d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dmFsJTIwZCdvcmNpYXxlbnwwfHwwfHx8MA%3D%3D", alt: "Strada con cipressi in Val d'Orcia" },
+      { src: "https://images.unsplash.com/photo-1516108317508-6788f6a160e4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHZhbCUyMGQnb3JjaWF8ZW58MHx8MHx8fDA%3D", alt: "Alba in Val d'Orcia" }
     ]
   },
   {
-    id: "pienza",
-    name: "Pienza",
-    location: "Pienza",
-    description: "✨ Città ideale del Rinascimento • Un Papa mi ha costruita apposta 👑 • Ossessionata dal pecorino 🧀 • Tramonti che ti faranno piangere 😭💕",
+    id: "chianti-classico",
+    name: "Chianti Classico",
+    location: "Toscana Centrale",
+    description: "🐓 Il Gallo Nero è il mio simbolo • 🍇 Il vino rosso è la mia personalità  • Colline, borghi e cantine storiche 🏰 • Cercasi qualcuno per brindare al tramonto 🌅",
     images: [
-      { src: "https://images.unsplash.com/photo-1607355566410-a7d04fa16cd1?w=800&q=80", alt: "Centro storico di Pienza con architettura rinascimentale" },
-      { src: "https://images.unsplash.com/photo-1602619929658-fc3de910bed0?w=800&q=80", alt: "Vicolo di Pienza" },
-      { src: "https://images.unsplash.com/photo-1571837825472-d96ce1f1f026?w=800&q=80", alt: "Vista dalla terrazza di Pienza" }
+      { src: "https://images.unsplash.com/photo-1523528283115-9bf9b1699245?w=800&q=80", alt: "Vigneti del Chianti Classico al tramonto" },
+      { src: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=800&q=80", alt: "Cantina storica nel Chianti Classico" },
+      { src: "https://images.unsplash.com/photo-1566995541428-f2246c17cda1?w=800&q=80", alt: "Degustazione vino Chianti Classico" }
     ]
   },
   {
@@ -98,17 +100,6 @@ const SITES = [
     images: [
       { src: "images\\sites\\jewmario\\mario1.jpg", alt: "Torri medievali di San Gimignano al tramonto" },
      ]
-  },  
-  {
-    id: "chianti",
-    name: "Vigneti del Chianti",
-    location: "Regione del Chianti",
-    description: "🍇 Vino rosso è la mia personalità • Degustazioni infinite 🍷🍷🍷 • Guidare tra le mie colline = terapia 🚗 • Ti faccio ubriacare d'amore (e non solo)",
-    images: [
-      { src: "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80", alt: "Vigneti del Chianti con filari di viti" },
-      { src: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=800&q=80", alt: "Cantina nel Chianti" },
-      { src: "https://images.unsplash.com/photo-1474722883778-792e7990302f?w=800&q=80", alt: "Degustazione vino nel Chianti" }
-    ]
   },
   {
     id: "lucca",
@@ -116,9 +107,9 @@ const SITES = [
     location: "Lucca",
     description: "🚴 Città delle mura perfette • Amo le passeggiate in bici sulle mura • 99 chiese (sono spirituale) ⛪ • Puccini è nato qui, quindi sì, sono musicale 🎵",
     images: [
-      { src: "https://images.unsplash.com/photo-1592925610498-1f6cfa7ba753?w=800&q=80", alt: "Mura di Lucca con alberi sopra" },
-      { src: "https://images.unsplash.com/photo-1558985212-de98b1e0aa57?w=800&q=80", alt: "Piazza dell'Anfiteatro a Lucca" },
-      { src: "https://images.unsplash.com/photo-1601408660285-89a60f7e3c3f?w=800&q=80", alt: "Torre Guinigi con alberi" }
+      { src: "https://unsplash.com/it/foto/applique-in-vetro-con-cornice-in-metallo-nero-vGdwtopObis", alt: "Mura di Lucca con alberi sopra" },
+      { src: "https://images.unsplash.com/photo-1707401100280-b40d51f1846a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bHVjY2F8ZW58MHx8MHx8fDA%3D", alt: "Piazza dell'Anfiteatro a Lucca" },
+      { src: "https://images.unsplash.com/photo-1650660049394-673df1cc152b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dG9ycmUlMjBndWluaWdpfGVufDB8fDB8fHww", alt: "Torre Guinigi con alberi" }
     ]
   },
   {
@@ -133,25 +124,14 @@ const SITES = [
     ]
   },
   {
-    id: "volterra",
-    name: "Volterra",
-    location: "Volterra",
-    description: "🏺 Etrusca doc, 3000 anni di storia • Misteriosa e affascinante 🌙 • Artigianato in alabastro fatto a mano ✋ • Viste drammatiche garantite 🎭",
+    id: "saturnia",
+    name: "Le terme di Saturnia",
+    location: "Saturno🪐",
+    description: "♨️ Acqua calda a 37° tutto l'anno • Cascate naturali gratuite 24/7 🌊 • Ti faccio rilassare come nessun'altra 💆 • Romantica sotto le stelle ✨ • Skin care level: divino 🧖‍♀️",
     images: [
-      { src: "https://images.unsplash.com/photo-1612698093158-e07ac200d44e?w=800&q=80", alt: "Volterra arroccata sulla collina" },
-      { src: "https://images.unsplash.com/photo-1590073242678-70ee3fc28f8e?w=800&q=80", alt: "Teatro romano di Volterra" },
-      { src: "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=800&q=80", alt: "Artigianato in alabastro" }
-    ]
-  },
-  {
-    id: "cinque-terre",
-    name: "Cinque Terre",
-    location: "Costa Ligure",
-    description: "🌈 Cinque personalità, un solo cuore • Case colorate = buon umore sempre 🏠 • Trekking vista mare 🥾 • Pesto fresco e focaccia ogni giorno 😋",
-    images: [
-      { src: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&q=80", alt: "Case colorate delle Cinque Terre sulla scogliera" },
-      { src: "https://images.unsplash.com/photo-1499678329028-101435549a4e?w=800&q=80", alt: "Manarola al tramonto" },
-      { src: "https://images.unsplash.com/photo-1538681105587-85640961bf8b?w=800&q=80", alt: "Sentiero delle Cinque Terre" }
+      { src: "https://plus.unsplash.com/premium_photo-1661866916518-1dcc1e907c2b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGVybWUlMjBkaSUyMHNhdHVybmlhfGVufDB8fDB8fHww", alt: "Volterra arroccata sulla collina" },
+      { src: "https://images.unsplash.com/photo-1599599630269-20a39545d23c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGVybWUlMjBkaSUyMHNhdHVybmlhfGVufDB8fDB8fHww", alt: "Teatro romano di Volterra" },
+      { src: "https://media.istockphoto.com/id/2147564674/it/foto/terme-di-saturnia.webp?a=1&b=1&s=612x612&w=0&k=20&c=xYBKgAmbzZ6QSsSO6Q7smCk0py7MV2uSA7EGRfXi8XM=", alt: "Artigianato in alabastro" }
     ]
   }
 ];

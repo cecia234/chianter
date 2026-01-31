@@ -33,6 +33,27 @@
       </a>
     </div>
     
+    <!-- Detail Modal -->
+    <div class="detail-modal" id="detail-modal">
+      <div class="detail-modal-backdrop"></div>
+      <div class="detail-modal-content">
+        <button class="detail-modal-close" aria-label="Chiudi">✕</button>
+        <div class="detail-modal-carousel">
+          <div class="detail-modal-carousel-track"></div>
+          <div class="detail-modal-carousel-dots"></div>
+        </div>
+        <div class="detail-modal-info">
+          <h2 class="detail-modal-name"></h2>
+          <p class="detail-modal-location"></p>
+          <p class="detail-modal-description"></p>
+        </div>
+        <div class="detail-modal-nav">
+          <button class="detail-modal-nav-btn detail-modal-prev" aria-label="Precedente">‹</button>
+          <button class="detail-modal-nav-btn detail-modal-next" aria-label="Successiva">›</button>
+        </div>
+      </div>
+    </div>
+    
   </div>
 
   <!-- Scripts -->
@@ -48,6 +69,21 @@
       const countEl = document.querySelector('.results-count');
       const swipeAgainBtn = document.getElementById('swipe-again-btn');
       
+      // Detail Modal Elements
+      const detailModal = document.getElementById('detail-modal');
+      const modalBackdrop = detailModal.querySelector('.detail-modal-backdrop');
+      const modalClose = detailModal.querySelector('.detail-modal-close');
+      const modalTrack = detailModal.querySelector('.detail-modal-carousel-track');
+      const modalDots = detailModal.querySelector('.detail-modal-carousel-dots');
+      const modalName = detailModal.querySelector('.detail-modal-name');
+      const modalLocation = detailModal.querySelector('.detail-modal-location');
+      const modalDescription = detailModal.querySelector('.detail-modal-description');
+      const modalPrev = detailModal.querySelector('.detail-modal-prev');
+      const modalNext = detailModal.querySelector('.detail-modal-next');
+      
+      let currentImageIndex = 0;
+      let currentImages = [];
+      
       // Get matched sites
       const matchedSites = App.getMatchedSites();
       
@@ -55,6 +91,96 @@
       if (countEl) {
         countEl.textContent = ` (${matchedSites.length})`;
       }
+      
+      // Open detail modal
+      function openDetailModal(site) {
+        currentImages = site.images || [{ src: site.imageSrc, alt: site.imageAlt }];
+        currentImageIndex = 0;
+        
+        // Set info
+        modalName.textContent = site.name;
+        modalLocation.textContent = `📍 ${site.location}`;
+        modalDescription.textContent = site.description;
+        
+        // Build carousel
+        modalTrack.innerHTML = currentImages.map(img => `
+          <div class="detail-modal-slide">
+            <img src="${img.src}" alt="${img.alt}">
+          </div>
+        `).join('');
+        
+        // Build dots
+        modalDots.innerHTML = currentImages.map((_, i) => `
+          <button class="detail-modal-dot ${i === 0 ? 'active' : ''}" data-index="${i}"></button>
+        `).join('');
+        
+        // Show/hide nav buttons
+        modalPrev.style.display = currentImages.length > 1 ? 'flex' : 'none';
+        modalNext.style.display = currentImages.length > 1 ? 'flex' : 'none';
+        
+        updateCarousel();
+        detailModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+      
+      // Close detail modal
+      function closeDetailModal() {
+        detailModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      
+      // Update carousel position
+      function updateCarousel() {
+        modalTrack.style.transform = `translateX(-${currentImageIndex * 100}%)`;
+        modalDots.querySelectorAll('.detail-modal-dot').forEach((dot, i) => {
+          dot.classList.toggle('active', i === currentImageIndex);
+        });
+      }
+      
+      // Navigate carousel
+      function navigateCarousel(direction) {
+        if (direction === 'next') {
+          currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+        } else {
+          currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+        }
+        updateCarousel();
+      }
+      
+      // Modal event listeners
+      modalClose.addEventListener('click', closeDetailModal);
+      modalBackdrop.addEventListener('click', closeDetailModal);
+      modalPrev.addEventListener('click', () => navigateCarousel('prev'));
+      modalNext.addEventListener('click', () => navigateCarousel('next'));
+      
+      // Dot clicks
+      modalDots.addEventListener('click', (e) => {
+        if (e.target.classList.contains('detail-modal-dot')) {
+          currentImageIndex = parseInt(e.target.dataset.index);
+          updateCarousel();
+        }
+      });
+      
+      // Swipe support for modal carousel
+      let touchStartX = 0;
+      modalTrack.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+      });
+      
+      modalTrack.addEventListener('touchend', (e) => {
+        const deltaX = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(deltaX) > 50) {
+          navigateCarousel(deltaX < 0 ? 'next' : 'prev');
+        }
+      });
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (!detailModal.classList.contains('active')) return;
+        if (e.key === 'Escape') closeDetailModal();
+        if (e.key === 'ArrowLeft') navigateCarousel('prev');
+        if (e.key === 'ArrowRight') navigateCarousel('next');
+      });
       
       // Render results or empty state
       if (matchedSites.length === 0) {
@@ -73,6 +199,7 @@
           
           const card = document.createElement('div');
           card.className = 'result-card';
+          card.style.cursor = 'pointer';
           card.innerHTML = `
             <img 
               src="${firstImage.src}" 
@@ -84,7 +211,12 @@
               <p class="result-card-location">📍 ${site.location}</p>
               <p class="result-card-description">${site.description}</p>
             </div>
+            <div class="result-card-hint">Tocca per i dettagli 👆</div>
           `;
+          
+          // Add click handler to open modal
+          card.addEventListener('click', () => openDetailModal(site));
+          
           listEl.appendChild(card);
         });
       }
