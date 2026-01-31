@@ -44,19 +44,19 @@ const SITES = [
     id: "ciccio",
     name: "Ciccio",
     location: "Trieste",
-    description: "🏙️ Mi chiamano la puttana del DSV • Portami a vedere il tramonto a barcola e sono tuo 🍦 • Soffro ancora di qualche acciacco a gomito e collo dopo aver salvato il mondo 13 volte 😏 • Aperitivo lover 🍷 ",
+    description: "🏙️ Mi chiamano la puttana del DSV • Se sei un vero narcisista non puoi swipare a sinistra • Portami a vedere il tramonto a barcola e sono tuo 🍦• Aperitivo lover 🍷 • Soffro ancora di qualche acciacco a gomito e collo dopo aver salvato il mondo 13 volte 😏",
     images: [
       { src: "images\\sites\\ciccio\\cicc1.png", alt: "Torri medievali di San Gimignano al tramonto" },
       { src: "images\\sites\\ciccio\\cicc7.png", alt: "Torri medievali di San Gimignano al tramonto" },
-      { src: "images\\sites\\ciccio\\cicc1.png", alt: "Torri medievali di San Gimignano al tramonto" },
       { src: "images\\sites\\ciccio\\cicc6.png", alt: "Torri medievali di San Gimignano al tramonto" },
       { src: "images\\sites\\ciccio\\cicc8.png", alt: "Torri medievali di San Gimignano al tramonto" },
       { src: "images\\sites\\ciccio\\cicc10.png", alt: "Torri medievali di San Gimignano al tramonto" },
-      { src: "images\\sites\\ciccio\\cicc4.jpg", alt: "Panorama di San Gimignano" },
+      { src: "images\\sites\\ciccio\\ciccep.png", alt: "Panorama di San Gimignano" },
       { src: "images\\sites\\ciccio\\cicc11.png", alt: "Panorama di San Gimignano" },
       { src: "images\\sites\\ciccio\\cicc3.jpg", alt: "Panorama di San Gimignano" },
       { src: "images\\sites\\ciccio\\cicc2.jpg", alt: "Vicoli di San Gimignano" },
       { src: "images\\sites\\ciccio\\cicc5.jpg", alt: "Panorama di San Gimignano" },
+      { src: "images\\sites\\ciccio\\cicc4.jpg", alt: "Panorama di San Gimignano" },
   ]
   },  
   {
@@ -82,14 +82,36 @@ const SITES = [
     ]
   },
   {
+    id: "marco",
+    name: "Uomo caldo",
+    location: "🔥 1Km da te 🔥",
+    description: "Vengo a prenderti io per una serata di fuoco🔥 • Non fidarti delle apparenze: la prospettiva inganna più di quanto pensi 🍆 • Cerco uomo maturo con PhD per sciogliere tutte le contratture dovute allo studio💆",
+    images: [
+      { src: "images\\sites\\marco\\marco1.jpeg", alt: "Panorama di San Gimignano" },
+      { src: "images\\sites\\marco\\marco3.jpeg", alt: "Panorama di San Gimignano" },
+      { src: "images\\sites\\marco\\marco2.jpeg", alt: "Panorama di San Gimignano" },
+    ]
+  },
+  {
     id: "chianti-classico",
-    name: "Chianti Classico",
+    name: "Chianti",
     location: "Toscana Centrale",
     description: "🐓 Il Gallo Nero è il mio simbolo • 🍇 Il vino rosso è la mia personalità  • Colline, borghi e cantine storiche 🏰 • Cercasi qualcuno per brindare al tramonto 🌅",
     images: [
-      { src: "https://images.unsplash.com/photo-1523528283115-9bf9b1699245?w=800&q=80", alt: "Vigneti del Chianti Classico al tramonto" },
-      { src: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=800&q=80", alt: "Cantina storica nel Chianti Classico" },
-      { src: "https://images.unsplash.com/photo-1566995541428-f2246c17cda1?w=800&q=80", alt: "Degustazione vino Chianti Classico" }
+      { src: "https://c4.wallpaperflare.com/wallpaper/121/399/766/road-landscape-house-italy-wallpaper-preview.jpg", alt: "Vigneti del Chianti Classico al tramonto" },
+      { src: "https://www.comeandseeitaly.com/wp-content/uploads/2020/08/Chianti-Classico-con-Picnic4-2.jpg", alt: "Cantina storica nel Chianti Classico" },
+      { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUS0waUk6BFLYbEhGVYl3PdXT0DduJ8znBFg&s", alt: "Degustazione vino Chianti Classico" }
+    ]
+  },
+  {
+    id: "chianti-classico",
+    name: "Antinori",
+    location: "Toscana Centrale",
+    description: "Degustami come fossi uno dei tuoi gel 👅 Architettura e vigne in simbiosi, come me e te😘 Swipa in fretta, sono libera fino al 31 marzo 😏 ",
+    images: [
+      { src: "https://www.winearchitecture.it/images/uploads/photos/antinori-cover.jpg", alt: "Vigneti del Chianti Classico al tramonto" },
+      { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8ehhIdOBlc-4Gh6pGVqCzlYYBj7rXkOhwZg&s", alt: "Cantina storica nel Chianti Classico" },
+      { src: "https://images.unsplash.com/photo-1508963397034-424d652ec1de?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Degustazione vino Chianti Classico" }
     ]
   },
   {
@@ -105,9 +127,9 @@ const SITES = [
     id: "lucca",
     name: "Lucca",
     location: "Lucca",
-    description: "🚴 Città delle mura perfette • Amo le passeggiate in bici sulle mura • 99 chiese (sono spirituale) ⛪ • Puccini è nato qui, quindi sì, sono musicale 🎵",
+    description: "Sono sicura che sei già stato dentro di me 😉 • Amo le passeggiate in bici sulle mura • 99 chiese ma ti porterò all'inferno 😈 • Puccini è nato qui, quindi sì, sono musicale 🎵",
     images: [
-      { src: "https://unsplash.com/it/foto/applique-in-vetro-con-cornice-in-metallo-nero-vGdwtopObis", alt: "Mura di Lucca con alberi sopra" },
+      { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkSxcP-zZNPnvI_xfUGO9BF2tF2nGRJAoc3A&s", alt: "Mura di Lucca con alberi sopra" },
       { src: "https://images.unsplash.com/photo-1707401100280-b40d51f1846a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bHVjY2F8ZW58MHx8MHx8fDA%3D", alt: "Piazza dell'Anfiteatro a Lucca" },
       { src: "https://images.unsplash.com/photo-1650660049394-673df1cc152b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dG9ycmUlMjBndWluaWdpfGVufDB8fDB8fHww", alt: "Torre Guinigi con alberi" }
     ]
@@ -118,9 +140,9 @@ const SITES = [
     location: "Montepulciano",
     description: "🏔️ Alto/a e elegante • Il mio Vino Nobile non ha bisogno di presentazioni 🍷👑 • Vista panoramica a 360° • Twilight mi ha reso famosa ma io valgo di più 🧛",
     images: [
-      { src: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800&q=80", alt: "Vista di Montepulciano all'ora d'oro" },
-      { src: "https://images.unsplash.com/photo-1598346763225-933d60204095?w=800&q=80", alt: "Piazza Grande di Montepulciano" },
-      { src: "https://images.unsplash.com/photo-1551801841-ecad345ace4d?w=800&q=80", alt: "Cantina storica a Montepulciano" }
+      { src: "https://plus.unsplash.com/premium_photo-1714948564307-57578feb51b0?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Vista di Montepulciano all'ora d'oro" },
+      { src: "https://plus.unsplash.com/premium_photo-1677620469198-8a6ece889bfa?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Piazza Grande di Montepulciano" },
+      { src: "https://images.unsplash.com/photo-1713288505599-a67d4c92ba83?q=80&w=937&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", alt: "Cantina storica a Montepulciano" }
     ]
   },
   {
@@ -132,6 +154,16 @@ const SITES = [
       { src: "https://plus.unsplash.com/premium_photo-1661866916518-1dcc1e907c2b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGVybWUlMjBkaSUyMHNhdHVybmlhfGVufDB8fDB8fHww", alt: "Volterra arroccata sulla collina" },
       { src: "https://images.unsplash.com/photo-1599599630269-20a39545d23c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGVybWUlMjBkaSUyMHNhdHVybmlhfGVufDB8fDB8fHww", alt: "Teatro romano di Volterra" },
       { src: "https://media.istockphoto.com/id/2147564674/it/foto/terme-di-saturnia.webp?a=1&b=1&s=612x612&w=0&k=20&c=xYBKgAmbzZ6QSsSO6Q7smCk0py7MV2uSA7EGRfXi8XM=", alt: "Artigianato in alabastro" }
+    ]
+  },
+  {
+    id: "le-mortelle",
+    name: "Le Mortelle",
+    location: "Maremma Toscana",
+    description: "🤪 Maremma che degustazioni • È un ramo di mirto quello o sei solo felice di vedermi? 😏 • Con me non bevi acqua 🍇 • Zero turisti, solo noi due 😏🏝️",
+    images: [
+      { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYJPCF8osjOahs0-DJXcMCgum8v-JpjFxVEw&s", alt: "Spiaggia Le Mortelle con acqua cristallina" },
+      { src: "https://data.campingpuntala.it/uploads/le_mortelle_degustazione_vino_03c62fd3c1.jpg", alt: "Costa della Maremma toscana" },
     ]
   }
 ];
